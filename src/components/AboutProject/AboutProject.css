@@ -1,0 +1,11 @@
+@import url(../../vendor/normalize.css);
+
+@import url(../../blocks/about-project/about-project.css);
+@import url(../../blocks/about-project/about-project__title.css);
+@import url(../../blocks/about-project/about-project__description.css);
+@import url(../../blocks/about-project/about-project__description-container.css);
+@import url(../../blocks/about-project/about-project__subtitle.css);
+@import url(../../blocks/about-project/about-project__paragraph.css);
+@import url(../../blocks/about-project/about-project__time-bar.css);
+@import url(../../blocks/about-project/about-project__tile.css);
+@import url(../../blocks/about-project/about-project__bar-subtitle.css);

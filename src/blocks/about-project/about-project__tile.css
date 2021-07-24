@@ -1,0 +1,18 @@
+.about-project__tile {
+  position: relative;
+  background-color: #303030;
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.about-project__tile:first-of-type {
+  max-width: 228px;
+  background-color: #3DDC84;
+  color: #000;
+}

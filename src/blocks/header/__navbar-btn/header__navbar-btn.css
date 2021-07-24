@@ -1,0 +1,14 @@
+.header__navbar-btn {
+  margin-right: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #fff;
+}
+
+.header__navbar-btn:last-of-type {
+  margin-right: 0;
+}

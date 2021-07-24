@@ -1,0 +1,9 @@
+.intro__image {
+  width: 722px;
+  height: 244px;
+  /*margin: 102px 70px 60px auto;*/
+  margin-top: 102px;
+  margin-left: 488px;
+  margin-bottom: 60px;
+  object-fit: contain;
+}
