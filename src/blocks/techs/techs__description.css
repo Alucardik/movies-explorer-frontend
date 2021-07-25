@@ -1,0 +1,6 @@
+.techs__description {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
