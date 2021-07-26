@@ -1,0 +1,17 @@
+.portfolio__item {
+  min-height: 59px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: #424242 1px solid;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+}
+
+.portfolio__item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}

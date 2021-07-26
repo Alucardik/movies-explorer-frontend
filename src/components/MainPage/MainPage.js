@@ -4,6 +4,7 @@ import Intro from '../Intro/Intro';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
 import AboutMe from '../AboutMe/AboutMe';
+import Portfolio from '../Portfolio/Portfolio';
 
 export default function MainPage() {
   return(
@@ -13,6 +14,7 @@ export default function MainPage() {
       <AboutProject />
       <Techs />
       <AboutMe />
+      <Portfolio />
     </div>
   );
 }
