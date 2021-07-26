@@ -1,0 +1,6 @@
+.about-me__info-container {
+  margin-top: 66px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
