@@ -1,0 +1,7 @@
+@import url(../../vendor/normalize.css);
+
+@import url(../../blocks/footer/footer.css);
+@import url(../../blocks/footer/footer__subtitle.css);
+@import url(../../blocks/footer/footer__info.css);
+@import url(../../blocks/footer/footer__links.css);
+@import url(../../blocks/footer/footer__link.css);
