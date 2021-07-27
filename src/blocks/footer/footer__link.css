@@ -1,7 +1,14 @@
 .footer__link {
   margin-right: 20px;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 230ms ease-out;
 }
 
 .footer__link:last-of-type {
   margin-right: 0;
+}
+
+.footer__link:hover {
+  opacity: .75;
 }

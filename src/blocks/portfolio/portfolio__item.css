@@ -9,9 +9,16 @@
   font-size: 30px;
   line-height: 50px;
   letter-spacing: -0.04em;
+  opacity: 1;
+  transition: opacity 250ms linear;
+  cursor: pointer;
 }
 
 .portfolio__item:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
+}
+
+.portfolio__item:hover {
+  opacity: .70;
 }
