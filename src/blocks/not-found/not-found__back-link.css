@@ -1,0 +1,19 @@
+.not-found__back-link {
+  margin: 184px 0 0;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #4285F4;
+  cursor: pointer;
+  transition: color 150ms ease-out;
+}
+
+.not-found__back-link:hover {
+  color: #fff;
+}
