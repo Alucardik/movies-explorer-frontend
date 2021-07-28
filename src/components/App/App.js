@@ -1,12 +1,18 @@
 import './App.css';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import MainPage from '../MainPage/MainPage';
 
 function App() {
   return (
-    <>
-      <MainPage />
-    </>
+    <Switch>
+      <Route path="/">
+        <MainPage />
+      </Route>
+      <Route path="*">
+        <></>
+      </Route>
+    </Switch>
   );
 }
 
-export default App;
+export default withRouter(App);

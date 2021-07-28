@@ -27,10 +27,14 @@ export default function AboutMe() {
       </div>
       <ul className="about-me__social-links">
         <li className="about-me__social-link">
-          Twitter
+          <a href="https://twitter.com/AlucardikAnno" rel="noopener" target="blank" className="about-me__social-link-content">
+            Twitter
+          </a>
         </li>
         <li className="about-me__social-link">
-          Github
+          <a href="https://github.com/Alucardik" rel="noopener" target="blank" className="about-me__social-link-content">
+            Github
+          </a>
         </li>
       </ul>
     </section>

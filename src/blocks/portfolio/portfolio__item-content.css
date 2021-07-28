@@ -1,0 +1,6 @@
+.portfolio__item-content {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  color: #fff;
+}
