@@ -1,11 +1,17 @@
 import './App.css';
+
 import { Route, Switch, withRouter } from 'react-router-dom';
-import MainPage from '../MainPage/MainPage';
+
 import NotFound from '../NotFound/NotFound';
+import MainPage from '../MainPage/MainPage';
+import Register from "../Register/Register";
 
 function App() {
   return (
     <Switch>
+      <Route path="/signup">
+        <Register />
+      </Route>
       <Route exact path="/">
         <MainPage />
       </Route>

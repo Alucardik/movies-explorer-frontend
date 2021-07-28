@@ -6,11 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   font-family: "Inter", "Arial", "Times New Roman", sans-serif;
   color: #FFF;
-
-  background-color: #000;
 }
 
 #root {
@@ -18,5 +15,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #303030;
+  background: #202020;
+;
 }
