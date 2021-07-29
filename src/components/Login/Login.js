@@ -1,13 +1,14 @@
 import './Login.css';
-
 import { Link } from "react-router-dom";
 
-import Header from "../Header/Header";
-
 export default function Login() {
+  function handleLogin() {
+    // login logic will later be described here
+    return "/movies";
+  }
+
   return(
     <div className="page page_type_auth">
-      <Header auth={true} />
       <div className="auth-form">
         <h1 className="auth-form__title">
           Рады видеть!
@@ -18,6 +19,7 @@ export default function Login() {
             <input
               className="auth-form__input"
               type="email"
+              placeholder="example@mail.ru"
               required
             />
           </label>
@@ -37,9 +39,9 @@ export default function Login() {
             Что-то пошло не так...
           </p>
 
-          <button type="submit" className="auth-form__submit-btn auth-form__submit-btn_login-offset">
+          <Link to={handleLogin} className="auth-form__submit-btn auth-form__submit-btn_login-offset">
             Войти
-          </button>
+          </Link>
           <p className="auth-form__hint">
             Ещё не зарегистрированы?
             <Link to="/signup" className="auth-form__redirect-link">

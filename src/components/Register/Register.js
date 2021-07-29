@@ -1,13 +1,15 @@
 import './Register.css';
-
 import { Link } from "react-router-dom";
 
-import Header from "../Header/Header";
-
 export default function Register() {
+
+  function handleRegister() {
+    // register logic will later be described here
+    return "/signin";
+  }
+
   return(
     <div className="page page_type_auth">
-      <Header auth={true} />
       <div className="auth-form">
         <h1 className="auth-form__title">
           Добро пожаловать!
@@ -18,6 +20,7 @@ export default function Register() {
             <input
               className="auth-form__input"
               type="text"
+              placeholder="Денис"
               minLength={2}
               maxLength={30}
               required
@@ -32,6 +35,7 @@ export default function Register() {
             <input
               className="auth-form__input"
               type="email"
+              placeholder="example@mail.ru"
               required
             />
           </label>
@@ -51,9 +55,9 @@ export default function Register() {
             Что-то пошло не так...
           </p>
 
-          <button type="submit" className="auth-form__submit-btn">
+          <Link to={handleRegister} className="auth-form__submit-btn">
             Зарегистрироваться
-          </button>
+          </Link>
           <p className="auth-form__hint">
             Уже зарегистрированы?
             <Link to="/signin" className="auth-form__redirect-link">

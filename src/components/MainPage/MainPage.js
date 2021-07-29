@@ -1,5 +1,5 @@
 import './MainPage.css';
-import Header from '../Header/Header';
+
 import Intro from '../Intro/Intro';
 import AboutProject from '../AboutProject/AboutProject';
 import Techs from '../Techs/Techs';
@@ -10,7 +10,6 @@ import Footer from '../Footer/Footer';
 export default function MainPage() {
   return(
     <div className="page">
-      <Header main={true} />
       <Intro />
       <AboutProject />
       <Techs />

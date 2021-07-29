@@ -1,0 +1,8 @@
+@import url(../../vendor/normalize.css);
+
+@import url(../../blocks/header/header__navbar.css);
+@import url(../../blocks/header/__navbar-btn/header__navbar-btn.css);
+@import url(../../blocks/header/__navbar-btn/_highlighted/header__navbar-btn_highlighted.css);
+@import url(../../blocks/header/__navbar-btn/_selected/header__navbar-btn_selected.css);
+@import url(../../blocks/header/__navbar-btn/_type/header__navbar-btn_type_profile.css);
+@import url(../../blocks/header/header__navbar-account-icon.css);
