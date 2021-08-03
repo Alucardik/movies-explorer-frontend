@@ -15,7 +15,7 @@ export default function SearchForm() {
         <div className="search-form__search-option">
           Короткометражки
           <label className="search-form__toggle-switch">
-            <input type="checkbox" />
+            <input type="checkbox" defaultChecked />
             <span className="search-form__toggle-switch-slider" />
           </label>
         </div>

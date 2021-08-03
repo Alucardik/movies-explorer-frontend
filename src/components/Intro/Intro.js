@@ -1,5 +1,5 @@
 import './Intro.css';
-import intro__logo from '../../images/intro__logo.svg';
+import intro__logo from '../../images/logos/intro__logo.svg';
 
 export default function Intro() {
   return(

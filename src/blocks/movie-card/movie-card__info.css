@@ -1,0 +1,12 @@
+.movie-card__info {
+  min-height: 19px;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 25px;
+  border-top: 1px solid #424242;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #8b8b8b;
+}

@@ -1,0 +1,21 @@
+.movies-list__load-more-btn {
+  width: 320px;
+  height: 36px;
+  margin: 50px auto 80px;
+  background: #2f2f2f;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 150ms linear;
+}
+
+.movies-list__load-more-btn:hover {
+  opacity: .7;
+}

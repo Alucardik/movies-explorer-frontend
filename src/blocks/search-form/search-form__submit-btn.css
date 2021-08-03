@@ -2,13 +2,19 @@
   position: relative;
   width: 80px;
   height: 34px;
+  padding: 0;
   margin-right: 7px;
   border: none;
   outline: none;
   border-radius: 48px;
   background-color: #4285F4;
-  background-image: url(../../images/search-icon.svg);
+  background-image: url(../../images/icons/search-icon.svg);
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+  transition: opacity 150ms linear;
+}
+
+.search-form__submit-btn:hover {
+  opacity: .7;
 }

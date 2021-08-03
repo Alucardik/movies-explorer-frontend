@@ -1,6 +1,6 @@
 import './Header.css';
 import {Route, Switch} from "react-router-dom";
-import header__logo from '../../images/header__logo.svg';
+import header__logo from '../../images/logos/header__logo.svg';
 import Navigation from '../Navigation/Navigation';
 
 export default function Header() {

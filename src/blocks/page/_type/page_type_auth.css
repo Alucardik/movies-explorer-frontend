@@ -1,4 +1,4 @@
 .page_type_auth {
   max-width: 396px;
-  height: 100vh;
+  height: calc(100vh - 112px);
 }

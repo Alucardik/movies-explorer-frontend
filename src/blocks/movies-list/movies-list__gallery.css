@@ -1,0 +1,7 @@
+.movies-list__gallery {
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(min-content, 270px));
+  grid-row-gap: 38px;
+  grid-column-gap: 20px;
+}

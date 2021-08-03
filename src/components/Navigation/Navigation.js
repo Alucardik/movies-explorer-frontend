@@ -1,6 +1,6 @@
 import './Navigation.css';
 import {Link, NavLink, Route, Switch} from "react-router-dom";
-import profile__icon from "../../images/profile-icon.svg";
+import profile__icon from "../../images/icons/profile-icon.svg";
 
 export default function Navigation() {
   return(
