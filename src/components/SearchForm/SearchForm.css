@@ -1,0 +1,10 @@
+@import url(../../vendor/normalize.css);
+
+@import url(../../blocks/search-form/search-form.css);
+@import url(../../blocks/search-form/search-form__search-container.css);
+@import url(../../blocks/search-form/search-form__input.css);
+@import url(../../blocks/search-form/search-form__submit-btn.css);
+@import url(../../blocks/search-form/search-form__search-options.css);
+@import url(../../blocks/search-form/search-form__search-option.css);
+@import url(../../blocks/search-form/search-form__toggle-switch.css);
+@import url(../../blocks/search-form/search-form__toggle-switch-slider.css);

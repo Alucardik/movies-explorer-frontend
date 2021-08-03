@@ -1,0 +1,12 @@
+import './Movies.css';
+
+import SearchForm from '../SearchForm/SearchForm';
+
+export default function Movies() {
+  return(
+    <div className="page">
+      <SearchForm />
+
+    </div>
+  );
+}
