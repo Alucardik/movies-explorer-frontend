@@ -2,7 +2,7 @@ import './MovieCard.css';
 import { useState } from 'react';
 
 export default function MovieCard(props) {
-  const [triggered, setTriggered] = useState(false);
+  const [triggered, setTriggered] = useState(props.movie.liked);
 
 
   function getHoursAndMinutes(mins) {
@@ -14,6 +14,7 @@ export default function MovieCard(props) {
     if (!props.saved) {
       setTriggered(!triggered);
     }
+    // card deletion logic will be here
   }
 
   return(
@@ -27,7 +28,7 @@ export default function MovieCard(props) {
           type="button"
           className={`movie-card__btn
           ${props.saved ? 'movie-card__btn_type_delete' : 'movie-card__btn_type_like'}
-          ${triggered && 'movie-card__btn_liked'}`}
+          ${(!props.saved && triggered) && 'movie-card__btn_liked'}`}
           onClick={handleBtnClick}
         />
       </div>

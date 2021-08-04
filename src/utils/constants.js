@@ -33,7 +33,7 @@ const mockMovies = [
     name: "В погоне за Бенкси",
     imgSrc: img14,
     duration: 102,
-    liked: true,
+    liked: false,
   },
   {
     name: "Баския: Взрыв реальности",
@@ -45,13 +45,13 @@ const mockMovies = [
     name: "Бег это свобода",
     imgSrc: img12,
     duration: 102,
-    liked: false,
+    liked: true,
   },
   {
     name: "Книготорговцы",
     imgSrc: img11,
     duration: 102,
-    liked: false,
+    liked: true,
   },
   {
     name: "Когда я думаю о Германии ночью",
@@ -69,7 +69,7 @@ const mockMovies = [
     name: "Дженис: Маленькая девочка грустит",
     imgSrc: img8,
     duration: 102,
-    liked: false,
+    liked: true,
   },
   {
     name: "Соберись перед прыжком",
