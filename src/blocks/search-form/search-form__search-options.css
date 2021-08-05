@@ -6,3 +6,15 @@
   justify-content: center;
   border: none;
 }
+
+@media screen and (max-width: 1190px) {
+  .search-form__search-options {
+   margin-top: 37px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .search-form__search-options {
+    margin-top: 45px;
+  }
+}

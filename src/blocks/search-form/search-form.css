@@ -7,3 +7,17 @@
   border-bottom: 1px solid rgba(170, 170, 170, .2);
   flex-grow: 1;
 }
+
+@media screen and (max-width: 1190px) {
+  .search-form {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .search-form {
+    padding: 60px 0 56px;
+  }
+}
