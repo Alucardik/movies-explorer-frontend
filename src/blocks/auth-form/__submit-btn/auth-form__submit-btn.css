@@ -21,3 +21,9 @@
   background-color: #fff;
   color: #4285F4;
  }
+
+@media screen and (max-width: 475px) {
+  .auth-form__submit-btn {
+    margin-top: 222px;
+  }
+}

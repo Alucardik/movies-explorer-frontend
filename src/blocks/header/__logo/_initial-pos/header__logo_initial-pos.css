@@ -7,3 +7,15 @@
     margin-left: -30px;
   }
 }
+
+@media screen and (max-width: 675px) {
+  .header__logo_initial-pos {
+    margin-left: -18px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .header__logo_initial-pos {
+    margin-left: calc(50% - 38px);
+  }
+}

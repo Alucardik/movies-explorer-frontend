@@ -1,3 +1,9 @@
 .auth-form {
   width: 100%;
 }
+
+@media screen and (max-width: 475px) {
+  .auth-form {
+    width: calc(13 / 16 * 100%);
+  }
+}
