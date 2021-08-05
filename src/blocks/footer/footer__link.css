@@ -12,3 +12,13 @@
 .footer__link:hover {
   opacity: .75;
 }
+
+@media screen and (max-width: 675px) {
+  .footer__link {
+    margin: 0 0 12px 0;
+  }
+
+  .footer__link:last-of-type {
+    margin-bottom: 0;
+  }
+}

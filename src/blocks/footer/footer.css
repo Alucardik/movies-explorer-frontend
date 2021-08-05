@@ -6,3 +6,15 @@
   color: #fff;
   flex-shrink: 0
 }
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .footer {
+    padding: 0 10px 10px;
+  }
+}
