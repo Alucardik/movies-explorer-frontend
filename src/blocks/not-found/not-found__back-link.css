@@ -17,3 +17,9 @@
 .not-found__back-link:hover {
   color: #fff;
 }
+
+@media screen and (max-width: 465px) {
+  .not-found__back-link {
+    margin-top: 284px;
+  }
+}

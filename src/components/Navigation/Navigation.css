@@ -5,4 +5,6 @@
 @import url(../../blocks/header/__navbar-btn/_highlighted/header__navbar-btn_highlighted.css);
 @import url(../../blocks/header/__navbar-btn/_selected/header__navbar-btn_selected.css);
 @import url(../../blocks/header/__navbar-btn/_type/header__navbar-btn_type_profile.css);
+@import url(../../blocks/header/__navbar-btn/_type/header__navbar-btn_type_mobile.css);
+@import url(../../blocks/header/__navbar-btn/_type/header__navbar-btn_type_close-menu.css);
 @import url(../../blocks/header/header__navbar-account-icon.css);

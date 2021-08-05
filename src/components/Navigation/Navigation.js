@@ -1,12 +1,31 @@
 import './Navigation.css';
-import {Link, NavLink, Route, Switch} from "react-router-dom";
-import profile__icon from "../../images/icons/profile-icon.svg";
+
+import {useState} from 'react';
+import {Link, NavLink, Route, Switch} from 'react-router-dom';
+
+import SideMenu from '../SideMenu/SideMenu';
+
+import profile__icon from '../../images/icons/profile-icon.svg';
 
 export default function Navigation() {
+  const [menuOpened, setMenuOpened] = useState(false);
+
+  function handleMenuBtnClick() {
+    setMenuOpened(!menuOpened);
+  }
+
   return(
     <nav className="header__navbar">
       <Switch>
         <Route path={["/profile", "/movies", "/saved-movies"]}>
+          <button
+            type="button"
+            className={`header__navbar-btn header__navbar-btn_type_mobile ${menuOpened && 'header__navbar-btn_type_close-menu'}`}
+            onClick={handleMenuBtnClick}
+          />
+
+          <SideMenu opened={menuOpened} onLinkClick={handleMenuBtnClick} />
+
           <NavLink
             to={"/movies"}
             className="header__navbar-btn header__navbar-btn_type_profile"
