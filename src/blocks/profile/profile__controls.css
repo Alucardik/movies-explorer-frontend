@@ -4,3 +4,16 @@
   flex-direction: column;
   align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__controls {
+    margin-top: 210px;
+  }
+}
+
+
+@media screen and (max-width: 475px) {
+  .profile__controls {
+    margin-top: 379px;
+  }
+}

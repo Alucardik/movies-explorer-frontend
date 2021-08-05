@@ -6,3 +6,10 @@
   align-items: center;
   color: #fff;
 }
+
+@media screen and (max-width: 475px) {
+  .profile {
+    padding: 0 30px;
+    box-sizing: border-box;
+  }
+}

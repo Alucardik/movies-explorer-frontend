@@ -2,3 +2,16 @@
   width: 410px;
   margin-top: 123px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile__info {
+    margin-top: 96px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .profile__info {
+    margin-top: 80px;
+    width: 100%;
+  }
+}
