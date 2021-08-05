@@ -19,3 +19,9 @@
 .movies-list__load-more-btn:hover {
   opacity: .7;
 }
+
+@media screen and (max-width: 475px){
+  .movies-list__load-more-btn {
+    width: 240px;
+  }
+}

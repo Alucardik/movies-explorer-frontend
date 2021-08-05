@@ -10,13 +10,13 @@
   border-radius: 50px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1190px) {
   .search-form__search-container {
-    width: calc(708 / 768 * 100%);
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 675px) {
+@media screen and (max-width: 475px) {
   .search-form__search-container {
     width: calc(300 / 320 * 100%);
   }
