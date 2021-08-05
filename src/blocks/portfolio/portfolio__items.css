@@ -5,3 +5,15 @@
   flex-direction: column;
   list-style: none;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio__items {
+    margin-bottom: 90px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .portfolio__items {
+    margin-bottom: 70px;
+  }
+}

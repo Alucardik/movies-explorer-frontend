@@ -1,3 +1,9 @@
 .header__logo_initial-pos {
-  margin: 0;
+  margin: 0 0 0 -70px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__logo_initial-pos {
+    margin-left: -30px;
+  }
 }

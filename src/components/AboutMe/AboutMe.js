@@ -22,21 +22,21 @@ export default function AboutMe() {
             я учился рисованию, пробовал писать стихи и со старшей школы учусь играть на гитаре. Мне показалось, что в
             сфере IT именно во фронтенде я смогу максимально выражать свои идеи, поэтому и решил пройти курсы.
           </p>
+          <ul className="about-me__social-links">
+            <li className="about-me__social-link">
+              <a href="https://twitter.com/AlucardikAnno" rel="noopener" target="blank" className="about-me__social-link-content">
+                Twitter
+              </a>
+            </li>
+            <li className="about-me__social-link">
+              <a href="https://github.com/Alucardik" rel="noopener" target="blank" className="about-me__social-link-content">
+                Github
+              </a>
+            </li>
+          </ul>
         </div>
         <img src={profilePhoto} alt="Мое фото" className="about-me__image" />
       </div>
-      <ul className="about-me__social-links">
-        <li className="about-me__social-link">
-          <a href="https://twitter.com/AlucardikAnno" rel="noopener" target="blank" className="about-me__social-link-content">
-            Twitter
-          </a>
-        </li>
-        <li className="about-me__social-link">
-          <a href="https://github.com/Alucardik" rel="noopener" target="blank" className="about-me__social-link-content">
-            Github
-          </a>
-        </li>
-      </ul>
     </section>
   );
 }

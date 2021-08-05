@@ -4,3 +4,15 @@
   width: 100%;
   background-color: #202020;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .portfolio {
+    padding: 0 18px;
+  }
+}

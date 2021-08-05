@@ -3,3 +3,15 @@
   height: 36px;
   display: flex;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project__time-bar {
+    margin: 93px 0 121px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .about-project__time-bar {
+    margin: 60px 0 93px;
+  }
+}

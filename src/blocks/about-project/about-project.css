@@ -5,3 +5,15 @@
   background-color: #202020;
   color: #FFF;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .about-project {
+    padding: 0 18px;
+  }
+}

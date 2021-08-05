@@ -15,4 +15,26 @@
   max-width: 228px;
   background-color: #3DDC84;
   color: #000;
+  flex-grow: 1;
+}
+
+.about-project__tile:last-of-type {
+  flex-grow: 4;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project__tile:first-of-type {
+    max-width: 140px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .about-project__tile {
+    font-size: 11px;
+    line-height: 13px;
+  }
+
+  .about-project__tile:first-of-type {
+    min-width: 100px;
+  }
 }

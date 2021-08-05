@@ -6,3 +6,21 @@
 .about-project__description-container:last-of-type {
   margin-right: 0;
 }
+
+@media screen and (max-width: 768px) {
+  .about-project__description-container {
+    margin-right: 30px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .about-project__description-container {
+    margin-right: 0;
+    margin-bottom: 56px;
+  }
+
+  .about-project__description-container:last-of-type {
+    margin-bottom: 0;
+  }
+}
+

@@ -9,3 +9,15 @@
   background-color: #272727;
   color: #FFF;
 }
+
+@media screen and (max-width: 768px) {
+  .techs {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .techs {
+    padding: 0 18px;
+  }
+}

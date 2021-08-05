@@ -1,7 +1,4 @@
 .techs__card {
-  width: 90px;
-  height: 60px;
-  margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,4 +20,11 @@
   background-color: #3DDC84;
   color: #000;
   transform: scale(1.15, 1.15);
+}
+
+@media screen and (max-width: 768px) {
+  .techs__card {
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

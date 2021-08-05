@@ -20,3 +20,18 @@
 .portfolio__item:hover {
   opacity: .70;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio__item {
+    min-height: 69px;
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .portfolio__item {
+    min-height: 47px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}
