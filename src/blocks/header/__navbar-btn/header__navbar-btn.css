@@ -19,3 +19,10 @@
 .header__navbar-btn:hover {
   opacity: .75;
 }
+
+@media screen and (max-width: 675px) {
+  .header__navbar-btn {
+    margin-right: 14px;
+    font-size: 10px;
+  }
+}
