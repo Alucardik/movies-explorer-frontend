@@ -8,6 +8,7 @@ export default function SearchForm() {
           type="search"
           placeholder="Фильм"
           className="search-form__input"
+          required
         />
         <button type="submit" className="search-form__submit-btn" />
       </div>
