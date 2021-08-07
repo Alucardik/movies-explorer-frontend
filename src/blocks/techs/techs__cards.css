@@ -1,0 +1,30 @@
+.techs__cards {
+  margin: 100px 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(7, 90px);
+  grid-template-rows: 60px;
+  grid-column-gap: 10px;
+  list-style: none;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__cards {
+    margin: 83px 0 90px;
+    grid-template-columns: repeat(7, 84px);
+    grid-template-rows: 57px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .techs__cards {
+    margin: 50px 0 70px;
+    grid-template-columns: repeat(2, 84px);
+    grid-auto-rows: 57px;
+    grid-row-gap: 10px;
+  }
+}
+
+/*@media screen and (max-width: ) {*/
+/*  */
+/*}*/

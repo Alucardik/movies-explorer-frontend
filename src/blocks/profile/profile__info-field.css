@@ -1,0 +1,22 @@
+.profile__info-field {
+  width: 100%;
+  min-height: 30px;
+  margin-bottom: 17px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #424242;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  align-items: baseline;
+}
+
+.profile__info-field:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.profile__info-field:focus {
+  outline: solid 1px #4285F4;
+}

@@ -1,0 +1,15 @@
+.auth-form__redirect-link {
+  margin-left: 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  text-decoration: none;
+  color: #4285F4;
+  transition: color 150ms ease-out;
+}
+
+.auth-form__redirect-link:hover {
+  color: #fff;
+}

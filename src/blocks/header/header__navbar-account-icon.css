@@ -1,0 +1,9 @@
+.header__navbar-account-icon {
+  margin-left: 13px;
+  padding: 9px;
+  display: inline;
+  border-radius: 6px;
+  background-color: #313131;
+  object-position: center;
+  vertical-align: middle;
+}

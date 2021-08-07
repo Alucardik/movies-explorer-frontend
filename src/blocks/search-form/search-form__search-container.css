@@ -1,0 +1,23 @@
+.search-form__search-container {
+  width: calc(932 / 1140 * 100%);
+  height: 48px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.5px solid rgba(170, 170, 170, 0.2);
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 1190px) {
+  .search-form__search-container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .search-form__search-container {
+    width: calc(300 / 320 * 100%);
+  }
+}

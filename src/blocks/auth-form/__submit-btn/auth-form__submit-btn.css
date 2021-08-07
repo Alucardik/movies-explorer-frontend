@@ -1,0 +1,29 @@
+.auth-form__submit-btn {
+  width: 100%;
+  margin-top: 135px;
+  padding: 13px 0 15px;
+  display: block;
+  background-color: #4285F4;
+  border: none;
+  border-radius: 3px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 300ms ease-out, color 300ms ease-out;
+}
+
+.auth-form__submit-btn:hover {
+  background-color: #fff;
+  color: #4285F4;
+ }
+
+@media screen and (max-width: 475px) {
+  .auth-form__submit-btn {
+    margin-top: 222px;
+  }
+}

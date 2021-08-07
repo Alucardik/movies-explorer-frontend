@@ -1,0 +1,17 @@
+.footer__subtitle {
+  width: 100%;
+  margin: 79px 0 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  color: #8B8B8B;
+}
+
+@media screen and (max-width: 675px) {
+  .footer__subtitle {
+    font-size: 12px;
+    line-height: 15px;
+  }
+}

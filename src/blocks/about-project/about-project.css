@@ -1,0 +1,19 @@
+.about-project {
+  width: 100%;
+  padding: 0 70px;
+  box-sizing: border-box;
+  background-color: #202020;
+  color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+  .about-project {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .about-project {
+    padding: 0 18px;
+  }
+}

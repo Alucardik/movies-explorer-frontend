@@ -1,0 +1,18 @@
+.side-menu__link {
+  min-height: 26px;
+  margin-bottom: 22px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.side-menu__link:last-of-type {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 0;
+}

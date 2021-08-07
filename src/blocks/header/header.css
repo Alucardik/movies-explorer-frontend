@@ -1,0 +1,22 @@
+.header {
+  max-width: 1280px;
+  width: 100%;
+  padding: 0 70px;
+  box-sizing: border-box;
+  background-color: #202020;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .header {
+    padding: 0 14px;
+  }
+}

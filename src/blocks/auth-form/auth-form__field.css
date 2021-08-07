@@ -1,0 +1,9 @@
+.auth-form__field {
+  display: block;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8B8B8B;
+  margin-bottom: 6px;
+}

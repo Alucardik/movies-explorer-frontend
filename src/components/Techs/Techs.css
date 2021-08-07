@@ -1,0 +1,9 @@
+@import url(../../vendor/normalize.css);
+
+@import url(../../blocks/techs/techs.css);
+@import url(../../blocks/techs/techs__title.css);
+@import url(../../blocks/techs/techs__description.css);
+@import url(../../blocks/techs/techs__subtitle.css);
+@import url(../../blocks/techs/techs__paragraph.css);
+@import url(../../blocks/techs/techs__cards.css);
+@import url(../../blocks/techs/techs__card.css);

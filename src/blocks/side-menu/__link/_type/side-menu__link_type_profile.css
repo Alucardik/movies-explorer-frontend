@@ -1,0 +1,9 @@
+.side-menu__link_type_profile {
+  margin-top: 621px;
+}
+
+@media screen and (max-width: 475px) {
+  .side-menu__link_type_profile {
+    margin-top: 422px;
+  }
+}

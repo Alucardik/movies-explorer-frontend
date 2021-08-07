@@ -1,0 +1,11 @@
+.side-menu__container_opened {
+  width: calc(520 / 768 * 100%);
+  right: 0;
+}
+
+@media screen and (max-width: 475px) {
+  .side-menu__container_opened {
+    width: 100%;
+  }
+}
+

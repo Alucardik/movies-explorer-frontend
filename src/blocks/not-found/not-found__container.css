@@ -1,0 +1,19 @@
+.not-found__container {
+  margin-top: 246px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .not-found__container {
+    margin-top: 408px;
+  }
+}
+
+@media screen and (max-width: 465px) {
+  .not-found__container {
+    margin-top: 329px;
+  }
+}

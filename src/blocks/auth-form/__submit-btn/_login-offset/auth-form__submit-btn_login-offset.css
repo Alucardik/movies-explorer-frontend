@@ -1,0 +1,9 @@
+.auth-form__submit-btn_login-offset {
+  margin-top: 203px;
+}
+
+@media screen and (max-width: 475px) {
+  .auth-form__submit-btn_login-offset {
+    margin-top: 290px;
+  }
+}

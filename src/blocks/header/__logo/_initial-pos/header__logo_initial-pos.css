@@ -1,0 +1,21 @@
+.header__logo_initial-pos {
+  margin: 0 0 0 -70px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__logo_initial-pos {
+    margin-left: -30px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .header__logo_initial-pos {
+    margin-left: -18px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .header__logo_initial-pos {
+    margin-left: calc(50% - 38px);
+  }
+}

@@ -1,0 +1,37 @@
+.portfolio__item {
+  min-height: 59px;
+  margin-bottom: 20px;
+  border-bottom: #424242 1px solid;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: -0.04em;
+  opacity: 1;
+  transition: opacity 250ms linear;
+  cursor: pointer;
+}
+
+.portfolio__item:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.portfolio__item:hover {
+  opacity: .70;
+}
+
+@media screen and (max-width: 768px) {
+  .portfolio__item {
+    min-height: 69px;
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .portfolio__item {
+    min-height: 47px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+}

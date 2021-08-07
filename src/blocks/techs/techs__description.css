@@ -1,0 +1,18 @@
+.techs__description {
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__description {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .techs__description {
+    margin-top: 60px;
+  }
+}

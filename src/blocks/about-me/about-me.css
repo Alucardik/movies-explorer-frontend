@@ -1,0 +1,19 @@
+.about-me {
+  width: 100%;
+  background-color: #202020;
+  padding: 0 70px;
+  box-sizing: border-box;
+  color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+  .about-me {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  .about-me {
+    padding: 0 18px;
+  }
+}

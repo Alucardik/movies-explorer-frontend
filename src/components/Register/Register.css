@@ -1,0 +1,16 @@
+@import url(../../vendor/normalize.css);
+
+@import url(../../blocks/page/page.css);
+@import url(../../blocks/page/_type/page_type_auth.css);
+
+@import url(../../blocks/auth-form/auth-form.css);
+@import url(../../blocks/auth-form/auth-form__title.css);
+@import url(../../blocks/auth-form/auth-form__form-container.css);
+@import url(../../blocks/auth-form/auth-form__field.css);
+@import url(../../blocks/auth-form/__input/auth-form__input.css);
+@import url(../../blocks/auth-form/__input/_incorrect/auth-form__input_incorrect.css);
+@import url(../../blocks/auth-form/__input-error/auth-form__input-error.css);
+@import url(../../blocks/auth-form/__input-error/_visible/auth-form__input-error_visible.css);
+@import url(../../blocks/auth-form/__submit-btn/auth-form__submit-btn.css);
+@import url(../../blocks/auth-form/auth-form__hint.css);
+@import url(../../blocks/auth-form/auth-form__redirect-link.css);
