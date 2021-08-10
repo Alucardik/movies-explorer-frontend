@@ -4,6 +4,7 @@ import { useState } from 'react';
 export default function MovieCard(props) {
   const [triggered, setTriggered] = useState(props.movie.liked);
 
+  console.log("MOVIE ", props.movie);
 
   function getHoursAndMinutes(mins) {
     const hours = Math.floor(mins / 60);
@@ -19,10 +20,10 @@ export default function MovieCard(props) {
 
   return(
     <div className="movie-card">
-      <img src={props.movie.imgSrc} alt="Превью фильма" className="movie-card__image" />
+      <img src={`https://api.nomoreparties.co${props.movie.image.url}`} alt="Превью фильма" className="movie-card__image" />
       <div className="movie-card__title-container">
         <h2 className="movie-card__title">
-          {props.movie.name}
+          {props.movie.nameRU}
         </h2>
         <button
           type="button"

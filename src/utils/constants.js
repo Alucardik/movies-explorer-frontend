@@ -115,7 +115,10 @@ const mockMovies = [
   },
 ];
 
+const movieApiBaseUrl = "https://api.nomoreparties.co/beatfilm-movies";
+
 
 export  {
   mockMovies,
+  movieApiBaseUrl
 };
