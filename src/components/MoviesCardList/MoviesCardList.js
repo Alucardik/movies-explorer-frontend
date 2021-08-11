@@ -14,7 +14,6 @@ export default class MoviesCardList extends React.Component {
     const storedFilms = JSON.parse(localStorage.getItem("storedFilms")),
       storedSome = !!storedFilms;
 
-
     this.state = {
       moviesList:
         (props.saved)

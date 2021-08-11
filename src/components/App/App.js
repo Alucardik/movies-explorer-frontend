@@ -2,6 +2,8 @@ import './App.css';
 
 import { Route, Switch, withRouter } from 'react-router-dom';
 
+import { currentUserContext } from '../../contexts/CurrentUserContext';
+
 import NotFound from '../NotFound/NotFound';
 import Movies from "../Movies/Movies";
 import SavedMovies from '../SavedMovies/SavedMovies';
@@ -13,7 +15,7 @@ import Profile from '../Profile/Profile';
 
 function App() {
   return (
-    <>
+    <currentUserContext.Provider value={{}}>
       <Header />
       <Switch>
         <Route path="/signup" component={Register} />
@@ -24,7 +26,7 @@ function App() {
         <Route exact path="/" component={MainPage} />
         <Route path="*" component={NotFound} />
       </Switch>
-    </>
+    </currentUserContext.Provider>
   );
 }
 

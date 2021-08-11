@@ -1,6 +1,9 @@
 import { movieApiBaseUrl } from './constants';
 
 function getFilms() {
+  if (localStorage.getItem("storedFilms")) {
+    return;
+  }
   fetch(movieApiBaseUrl, {
     method: "GET",
   })

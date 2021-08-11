@@ -1,11 +1,45 @@
 import './Register.css';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { mainApi } from '../../utils/MainApi';
 
 export default function Register() {
+  const [userName, setUserName] = useState("");
+  const [userMail, setUserMail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [serverErrorShown, setServerErrorShown] = useState(false);
+  const [inputErrorShown, setInputErrorShown] = useState(false);
 
-  function handleRegister() {
-    // register logic will later be described here
-    return "/signin";
+  function handleInputChange(e) {
+    switch (e.target.name) {
+      case "userName":
+        setUserName(e.target.value);
+        break;
+      case "userMail":
+        setUserMail(e.target.value);
+        break;
+      case "userPassword":
+        setUserPassword(e.target.value);
+        break;
+      default:
+        return;
+    }
+  }
+
+  function handleFormSubmit() {
+    mainApi.register({
+      name: userName,
+      email: userMail,
+      password: userPassword,
+    })
+      .then(() => {
+        return "/signin";
+      })
+      .catch((err) => {
+        console.log(err);
+        setServerErrorShown(true);
+        return "/signup";
+      })
   }
 
   return(
@@ -19,10 +53,13 @@ export default function Register() {
             Имя
             <input
               className="auth-form__input"
+              name="userName"
               type="text"
               placeholder="Денис"
               minLength={2}
               maxLength={30}
+              value={userName}
+              onChange={handleInputChange}
               required
             />
           </label>
@@ -35,6 +72,9 @@ export default function Register() {
             <input
               className="auth-form__input"
               type="email"
+              name="userMail"
+              value={userMail}
+              onChange={handleInputChange}
               placeholder="example@mail.ru"
               required
             />
@@ -48,6 +88,9 @@ export default function Register() {
             <input
               className="auth-form__input"
               type="password"
+              name="userPassword"
+              value={userPassword}
+              onChange={handleInputChange}
               required
             />
           </label>
@@ -55,7 +98,7 @@ export default function Register() {
             Что-то пошло не так...
           </p>
 
-          <Link to={handleRegister} className="auth-form__submit-btn">
+          <Link to={handleFormSubmit} className="auth-form__submit-btn">
             Зарегистрироваться
           </Link>
           <p className="auth-form__hint">
