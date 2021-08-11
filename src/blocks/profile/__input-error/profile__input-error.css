@@ -1,0 +1,13 @@
+.profile__input-error {
+  visibility: hidden;
+  margin: 0 0 6px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+}
+
+.profile__input-error:last-of-type {
+  margin-bottom: 0;
+}

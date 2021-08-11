@@ -17,10 +17,14 @@ class Profile extends React.Component {
 
     this.state = {
       editAllowed: false,
+      formValid: true,
       userName: "Денис",
       userMail: "example@mail.ru",
+      userNameError: "",
+      userMailError: "",
     }
   }
+
 
   // get cur user's data from context
   componentDidMount() {
@@ -28,6 +32,17 @@ class Profile extends React.Component {
       userName: this.context.name,
       userMail: this.context.email,
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.userMail !== this.state.userMail || prevState.userName !== this.state.userName) {
+      this.setState({formValid: this.checkInputValidity()});
+    }
+  }
+
+  checkInputValidity = () => {
+    return (this.state.userMailError === "") &&
+      (this.state.userNameError === "");
   }
 
   handleEditClick = (e) => {
@@ -44,14 +59,18 @@ class Profile extends React.Component {
       })
       .catch((err) => {
         console.log(err);
+        this.setState({serverError: err});
       });
   }
 
   handleChange = (e) => {
+    this.setState({serverError: ""});
     const {name, value} = e.target;
-    this.setState({
-      [name]: value,
-    });
+    this.setState({[name]: value});
+    (!e.target.validity.valid)
+      ? this.setState({[`${name}Error`]: e.target.validationMessage})
+      : this.setState({[`${name}Error`]: ""});
+
 
     if ((name === "userName")
       ? (value !== this.context.name || this.state.userMail !== this.context.email)
@@ -96,11 +115,16 @@ class Profile extends React.Component {
                 type="text"
                 placeholder="Денис"
                 value={this.state.userName}
+                pattern="[а-яА-Яa-zA-Z][а-яА-Яa-zA-Z -]*"
                 minLength={2}
                 maxLength={30}
                 onChange={this.handleChange}
+                required
               />
             </label>
+            <p className={`profile__input-error ${(this.state.userNameError !== "") && "profile__input-error_visible"}`}>
+              {this.state.userNameError}
+            </p>
 
             <label className="profile__info-field">
               E-mail
@@ -111,15 +135,19 @@ class Profile extends React.Component {
                 value={this.state.userMail}
                 type="email"
                 onChange={this.handleChange}
+                required
               />
             </label>
+            <p className={`profile__input-error ${(this.state.userPasswordError !== "" || this.state.serverError !== "") && "profile__input-error_visible"}`}>
+              {(this.state.userMailError !== "") ? this.state.userMailError : this.state.serverError}
+            </p>
           </form>
           <div className="profile__controls">
             <button
               type="submit"
-              className={`profile__btn ${!this.state.editAllowed && "profile__btn_type_disabled"}`}
+              className={`profile__btn ${(!this.state.editAllowed || !this.state.formValid) && "profile__btn_type_disabled"}`}
               onClick={this.handleEditClick}
-              disabled={!this.state.editAllowed}
+              disabled={!this.state.editAllowed || !this.state.formValid}
             >
               Редактировать
             </button>
