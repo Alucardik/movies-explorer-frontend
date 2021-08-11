@@ -1,9 +1,9 @@
 import './Register.css';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { useState } from 'react';
 import { mainApi } from '../../utils/MainApi';
 
-export default function Register() {
+function Register(props) {
   const [userName, setUserName] = useState("");
   const [userMail, setUserMail] = useState("");
   const [userPassword, setUserPassword] = useState("");
@@ -26,20 +26,20 @@ export default function Register() {
     }
   }
 
-  function handleFormSubmit() {
+  function handleFormSubmit(e) {
+    e.preventDefault();
     mainApi.register({
       name: userName,
       email: userMail,
       password: userPassword,
     })
       .then(() => {
-        return "/signin";
+         props.history.push("/signin");
       })
       .catch((err) => {
         console.log(err);
         setServerErrorShown(true);
-        return "/signup";
-      })
+      });
   }
 
   return(
@@ -48,7 +48,7 @@ export default function Register() {
         <h1 className="auth-form__title">
           Добро пожаловать!
         </h1>
-        <form className="auth-form__form-container" noValidate>
+        <form className="auth-form__form-container" noValidate onSubmit={handleFormSubmit}>
           <label className="auth-form__field">
             Имя
             <input
@@ -98,9 +98,9 @@ export default function Register() {
             Что-то пошло не так...
           </p>
 
-          <Link to={handleFormSubmit} className="auth-form__submit-btn">
+          <button type="submit" className="auth-form__submit-btn">
             Зарегистрироваться
-          </Link>
+          </button>
           <p className="auth-form__hint">
             Уже зарегистрированы?
             <Link to="/signin" className="auth-form__redirect-link">
@@ -112,3 +112,5 @@ export default function Register() {
     </div>
   );
 }
+
+export default withRouter(Register);

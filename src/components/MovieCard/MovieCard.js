@@ -4,8 +4,6 @@ import { useState } from 'react';
 export default function MovieCard(props) {
   const [triggered, setTriggered] = useState(props.movie.liked);
 
-  console.log("MOVIE ", props.movie);
-
   function getHoursAndMinutes(mins) {
     const hours = Math.floor(mins / 60);
     return `${hours}ч ${mins - hours * 60}м`;

@@ -25,12 +25,10 @@ export default class MoviesCardList extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log(this.props.formParams);
     if (prevProps.formParams !== this.props.formParams) {
       this.setState({
         moviesList: getFilteredFilms(this.props.formParams),
       });
-      // console.log(this.state.moviesList);
     }
   }
 

@@ -1,13 +1,16 @@
 import './Navigation.css';
 
-import {useState} from 'react';
+import { useContext, useState } from 'react';
 import {Link, NavLink, Route, Switch} from 'react-router-dom';
 
 import SideMenu from '../SideMenu/SideMenu';
 
 import profile__icon from '../../images/icons/profile-icon.svg';
+import { currentUserContext } from '../../contexts/CurrentUserContext';
 
 export default function Navigation() {
+  const { loggedIn } = useContext(currentUserContext);
+
   const [menuOpened, setMenuOpened] = useState(false);
 
   function handleMenuBtnClick() {
@@ -17,7 +20,7 @@ export default function Navigation() {
   return(
     <nav className="header__navbar">
       <Switch>
-        <Route path={["/profile", "/movies", "/saved-movies"]}>
+        <Route exact path={["/profile", "/movies", "/saved-movies", `${loggedIn && "/"}`]}>
           <button
             type="button"
             className={`header__navbar-btn header__navbar-btn_type_mobile ${menuOpened && 'header__navbar-btn_type_close-menu'}`}

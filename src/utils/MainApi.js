@@ -5,9 +5,16 @@ class MainApi {
     this._baseUrl = baseUrl;
   }
 
-  _checkResponse(res) {
+  _checkResponseJson(res) {
     if (res.ok) {
       return res.json();
+    }
+    return Promise.reject(`Encountered error: ${res.status}`);
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res;
     }
     return Promise.reject(`Encountered error: ${res.status}`);
   }
@@ -25,11 +32,11 @@ class MainApi {
         password,
       }),
     })
-      .then(this._checkResponse);
+      .then(this._checkResponseJson);
   }
 
   login = ({ email, password }) => {
-    return fetch(`${this._baseUrl}/signup`, {
+    return fetch(`${this._baseUrl}/signin`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -43,7 +50,7 @@ class MainApi {
       .then(this._checkResponse);
   }
 
-  logout() {
+  logout = () => {
     return fetch(`${this._baseUrl}/signout`, {
       method: "DELETE",
       credentials: "include",
@@ -51,12 +58,12 @@ class MainApi {
       .then(this._checkResponse);
   }
 
-  checkToken() {
+  checkToken = () => {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       credentials: "include",
     })
-      .then(this._checkResponse);
+      .then(this._checkResponseJson);
   }
 }
 

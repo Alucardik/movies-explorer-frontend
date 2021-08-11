@@ -3,7 +3,13 @@ import './Profile.css';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { currentUserContext } from '../../contexts/CurrentUserContext';
+import {mainApi} from "../../utils/MainApi";
+
+
 class Profile extends React.Component {
+  static contextType = currentUserContext;
+
   constructor(props) {
     super(props);
 
@@ -14,6 +20,14 @@ class Profile extends React.Component {
       userName: "Денис",
       userMail: "example@mail.ru",
     }
+  }
+
+  // get cur user's data from context
+  componentDidMount() {
+    this.setState({
+      userName: this.context.name,
+      userMail: this.context.email,
+    });
   }
 
   handleEditClick = (e) => {
@@ -40,7 +54,16 @@ class Profile extends React.Component {
   }
 
   handleExit = () => {
-    this.props.history.push("/");
+    mainApi.logout()
+      .then(() => {
+        this.props.setters.setName("");
+        this.props.setters.setMail("");
+        this.props.setters.setLogged(false);
+        this.props.history.push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   render() {
