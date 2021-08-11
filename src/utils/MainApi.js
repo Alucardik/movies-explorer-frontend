@@ -19,6 +19,8 @@ class MainApi {
     return Promise.reject(`Encountered error: ${res.status}`);
   }
 
+  // user requests
+
   register = ({ name, email, password }) => {
     return fetch(`${this._baseUrl}/signup`, {
       method: "POST",
@@ -62,6 +64,21 @@ class MainApi {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
       credentials: "include",
+    })
+      .then(this._checkResponseJson);
+  }
+
+  updateUser = ({ name, email }) => {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+      }),
     })
       .then(this._checkResponseJson);
   }

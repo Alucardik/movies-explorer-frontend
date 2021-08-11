@@ -4,7 +4,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { currentUserContext } from '../../contexts/CurrentUserContext';
-import {mainApi} from "../../utils/MainApi";
+import { mainApi } from "../../utils/MainApi";
 
 
 class Profile extends React.Component {
@@ -32,18 +32,19 @@ class Profile extends React.Component {
 
   handleEditClick = (e) => {
     e.preventDefault();
-    this.setState((prevState) => {
-      if (!prevState.editAllowed) {
-        // waiting for form to be enabled for editing,
-        // otherwise focus won't work
-        setTimeout(() => {
-          this.nameRef.current.focus();
-        }, 0);
-      }
-      return {
-        editAllowed: !prevState.editAllowed,
-      };
-    });
+    mainApi.updateUser({name: this.state.userName, email: this.state.userMail})
+      .then(({ name, email }) => {
+        this.setState({
+          editAllowed: false,
+          userName: name,
+          userMail: email,
+        });
+        this.props.setters.setName(name);
+        this.props.setters.setMail(email);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   handleChange = (e) => {
@@ -51,6 +52,18 @@ class Profile extends React.Component {
     this.setState({
       [name]: value,
     });
+
+    if ((name === "userName")
+      ? (value !== this.context.name || this.state.userMail !== this.context.email)
+      : (value !== this.context.email || this.state.userName !== this.context.name)) {
+      this.setState({
+        editAllowed: true,
+      });
+    } else {
+      this.setState({
+        editAllowed: false,
+      });
+    }
   }
 
   handleExit = () => {
@@ -71,7 +84,7 @@ class Profile extends React.Component {
       <div className="page">
         <div className="profile">
           <h1 className="profile__title">
-            Привет, {this.state.userName}!
+            Привет, {this.context.name}!
           </h1>
           <form className="profile__info" noValidate>
             <label className="profile__info-field">
@@ -85,7 +98,6 @@ class Profile extends React.Component {
                 value={this.state.userName}
                 minLength={2}
                 maxLength={30}
-                disabled={!this.state.editAllowed}
                 onChange={this.handleChange}
               />
             </label>
@@ -98,7 +110,6 @@ class Profile extends React.Component {
                 placeholder="example@mail.ru"
                 value={this.state.userMail}
                 type="email"
-                disabled={!this.state.editAllowed}
                 onChange={this.handleChange}
               />
             </label>
@@ -106,10 +117,11 @@ class Profile extends React.Component {
           <div className="profile__controls">
             <button
               type="submit"
-              className={`profile__btn ${this.state.editAllowed && "profile__btn_type_save"}`}
+              className={`profile__btn ${!this.state.editAllowed && "profile__btn_type_disabled"}`}
               onClick={this.handleEditClick}
+              disabled={!this.state.editAllowed}
             >
-              {this.state.editAllowed ? "Сохранить" : "Редактировать"}
+              Редактировать
             </button>
             <button type="button" className="profile__btn profile__btn_type_exit" onClick={this.handleExit}>
               Выйти из аккаунта

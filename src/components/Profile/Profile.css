@@ -10,4 +10,4 @@
 @import url(../../blocks/profile/profile__controls.css);
 @import url(../../blocks/profile/__btn/profile__btn.css);
 @import url(../../blocks/profile/__btn/_type/profile__btn_type_exit.css);
-@import url(../../blocks/profile/__btn/_type/profile__btn_type_save.css);
+@import url(../../blocks/profile/__btn/_type/profile__btn_type_disabled.css);
