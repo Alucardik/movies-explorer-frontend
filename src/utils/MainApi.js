@@ -9,14 +9,14 @@ class MainApi {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Encountered error: ${res.status}`);
+    return res.json().then(errContent => Promise.reject(errContent.message));
   }
 
   _checkResponse(res) {
     if (res.ok) {
       return res;
     }
-    return Promise.reject(`Encountered error: ${res.status}`);
+    return res.json().then(errContent => Promise.reject(errContent.message));
   }
 
   // user requests

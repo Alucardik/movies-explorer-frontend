@@ -1,116 +1,141 @@
 import './Register.css';
 import { Link, withRouter } from 'react-router-dom';
-import { useState } from 'react';
+import React from 'react';
 import { mainApi } from '../../utils/MainApi';
 
-function Register(props) {
-  const [userName, setUserName] = useState("");
-  const [userMail, setUserMail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [serverErrorShown, setServerErrorShown] = useState(false);
-  const [inputErrorShown, setInputErrorShown] = useState(false);
+class Register extends React.Component {
+  constructor(props) {
+    super(props);
 
-  function handleInputChange(e) {
-    switch (e.target.name) {
-      case "userName":
-        setUserName(e.target.value);
-        break;
-      case "userMail":
-        setUserMail(e.target.value);
-        break;
-      case "userPassword":
-        setUserPassword(e.target.value);
-        break;
-      default:
-        return;
+    this.state = {
+      userMail: "",
+      userPassword: "",
+      userName: "",
+      serverError: "",
+      userMailError: "",
+      userPasswordError: "",
+      userNameError: "",
+      formValid: false,
     }
   }
 
-  function handleFormSubmit(e) {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.userMail !== this.state.userMail ||
+      prevState.userPassword !== this.state.userPassword ||
+      prevState.userName !== this.state.userName) {
+      this.setState({formValid: this.checkInputValidity()});
+    }
+  }
+
+  checkInputValidity = () => {
+    return (this.state.userMailError === "" && this.state.userMail !== "") &&
+      (this.state.userPasswordError === "" && this.state.userPassword !== "") &&
+      (this.state.userNameError === "" && this.state.userName !== "");
+  }
+
+  handleInputChange = (e) => {
+    // resetting error message from server
+    this.setState({serverError: ""});
+    const { name } = e.target;
+    this.setState({[name]: e.target.value});
+    (!e.target.validity.valid)
+      ? this.setState({[`${name}Error`]: e.target.validationMessage})
+      : this.setState({[`${name}Error`]: ""});
+  }
+
+  handleFormSubmit = (e) => {
     e.preventDefault();
     mainApi.register({
-      name: userName,
-      email: userMail,
-      password: userPassword,
+      name: this.state.userName,
+      email: this.state.userMail,
+      password: this.state.userPassword,
     })
       .then(() => {
-         props.history.push("/signin");
+         this.props.history.push("/signin");
       })
       .catch((err) => {
         console.log(err);
-        setServerErrorShown(true);
+        this.setState({serverError: err});
       });
   }
 
-  return(
-    <div className="page page_type_auth">
-      <div className="auth-form">
-        <h1 className="auth-form__title">
-          Добро пожаловать!
-        </h1>
-        <form className="auth-form__form-container" noValidate onSubmit={handleFormSubmit}>
-          <label className="auth-form__field">
-            Имя
-            <input
-              className="auth-form__input"
-              name="userName"
-              type="text"
-              placeholder="Денис"
-              minLength={2}
-              maxLength={30}
-              value={userName}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
-          <p className="auth-form__input-error">
-            Недопустимое имя
-          </p>
+  render() {
+    return(
+      <div className="page page_type_auth">
+        <div className="auth-form">
+          <h1 className="auth-form__title">
+            Добро пожаловать!
+          </h1>
+          <form className="auth-form__form-container" noValidate onSubmit={this.handleFormSubmit}>
+            <label className="auth-form__field">
+              Имя
+              <input
+                className="auth-form__input"
+                name="userName"
+                type="text"
+                placeholder="Денис"
+                pattern="[а-яА-Яa-zA-Z][а-яА-Яa-zA-Z -]*"
+                minLength={2}
+                maxLength={30}
+                value={this.state.userName}
+                onChange={this.handleInputChange}
+                required
+              />
+            </label>
+            <p className={`auth-form__input-error ${(this.state.userNameError !== "") && "auth-form__input-error_visible"}`}>
+              {this.state.userNameError}
+            </p>
 
-          <label className="auth-form__field">
-            E-mail
-            <input
-              className="auth-form__input"
-              type="email"
-              name="userMail"
-              value={userMail}
-              onChange={handleInputChange}
-              placeholder="example@mail.ru"
-              required
-            />
-          </label>
-          <p className="auth-form__input-error">
-            Недействительный e-mail
-          </p>
+            <label className="auth-form__field">
+              E-mail
+              <input
+                className="auth-form__input"
+                type="email"
+                name="userMail"
+                value={this.state.userMail}
+                onChange={this.handleInputChange}
+                placeholder="example@mail.ru"
+                required
+              />
+            </label>
+            <p className={`auth-form__input-error ${(this.state.userMailError !== "") && "auth-form__input-error_visible"}`}>
+              {this.state.userMailError}
+            </p>
 
-          <label className="auth-form__field">
-            Пароль
-            <input
-              className="auth-form__input"
-              type="password"
-              name="userPassword"
-              value={userPassword}
-              onChange={handleInputChange}
-              required
-            />
-          </label>
-          <p className="auth-form__input-error">
-            Что-то пошло не так...
-          </p>
+            <label className="auth-form__field">
+              Пароль
+              <input
+                className="auth-form__input"
+                type="password"
+                name="userPassword"
+                value={this.state.userPassword}
+                onChange={this.handleInputChange}
+                required
+              />
+            </label>
+            <p className={`auth-form__input-error ${(this.state.userPasswordError !== "" || this.state.serverError !== "") && "auth-form__input-error_visible"}`}>
+              {(this.state.userPasswordError !== "") ? this.state.userPasswordError : this.state.serverError}
+            </p>
 
-          <button type="submit" className="auth-form__submit-btn">
-            Зарегистрироваться
-          </button>
-          <p className="auth-form__hint">
-            Уже зарегистрированы?
-            <Link to="/signin" className="auth-form__redirect-link">
-              Войти
-            </Link>
-          </p>
-        </form>
+            <button
+              type="submit"
+              className={`auth-form__submit-btn ${!this.state.formValid && "auth-form__submit-btn_disabled"}`}
+              disabled={!this.state.formValid}
+            >
+              Зарегистрироваться
+            </button>
+            <p className="auth-form__hint">
+              Уже зарегистрированы?
+              <Link to="/signin" className="auth-form__redirect-link">
+                Войти
+              </Link>
+            </p>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
 }
 
 export default withRouter(Register);

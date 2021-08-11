@@ -1,6 +1,7 @@
 .auth-form__input-error {
   visibility: hidden;
   margin: 0 0 6px;
+  min-height: 12px;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
