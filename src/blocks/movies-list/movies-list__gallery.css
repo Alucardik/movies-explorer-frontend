@@ -6,7 +6,7 @@
   grid-template-columns: repeat(4, minmax(230px, 1fr));
   grid-row-gap: 38px;
   grid-column-gap: 20px;
-  grid-auto-rows: minmax(230px, 1fr);
+  grid-auto-rows: 230px;
 }
 
 @media screen and (max-width: 1190px) {
@@ -14,6 +14,13 @@
     grid-template-columns: repeat(2, minmax(300px, 1fr));
     grid-row-gap: 30px;
     grid-column-gap: 30px;
+    grid-auto-rows: 320px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .movies-list__gallery {
+    grid-auto-rows: 270px;
   }
 }
 
@@ -22,5 +29,12 @@
     grid-template-columns: 100%;
     grid-row-gap: 34px;
     grid-column-gap: 0;
+    grid-auto-rows: 320px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .movies-list__gallery {
+    grid-auto-rows: 270px;
   }
 }
