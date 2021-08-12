@@ -1,0 +1,10 @@
+.movie-card__image-link {
+  width: 100%;
+  height: calc(151 / 230 * 100%);
+}
+
+@media screen and (max-width: 1190px) {
+  .movie-card__image-link {
+    height: calc(190 / 270 * 100%);
+  }
+}

@@ -6,7 +6,6 @@ export default function MovieCard(props) {
   const [liked, setLiked] = useState(false);
   const { movieId } = props.movie;
 
-
   useEffect(() => {
     setLiked(props.movie.liked);
   }, [props.movie.liked]);
@@ -49,11 +48,18 @@ export default function MovieCard(props) {
 
   return(
     <div className="movie-card">
-      <img
-        src={`${(props.saved) ? (props.movie.image) : (`https://api.nomoreparties.co${props.movie.image.url}`)}`}
-        alt="Превью фильма"
-        className="movie-card__image"
-      />
+      <a
+        href={(props.saved) ? props.movie.trailer : props.movie.trailerLink}
+        rel="noopener noreferrer"
+        target="_blank"
+        className="movie-card__image-link"
+      >
+        <img
+          src={`${(props.saved) ? (props.movie.image) : (`https://api.nomoreparties.co${props.movie.image.url}`)}`}
+          alt="Превью фильма"
+          className="movie-card__image"
+        />
+      </a>
       <div className="movie-card__title-container">
         <h2 className="movie-card__title">
           {props.movie.nameRU}

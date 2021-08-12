@@ -18,11 +18,17 @@ export default class MoviesCardList extends React.Component {
       likedMoviesList: [],
       moviesList: storedSome ? storedFilms : [],
       showLoader: false,
-      filmsShownCount: Math.min(12, storedSome ? storedFilms.length : 0),
+      filmsShownCount: 0,
+      filmsShownIncrement: 0,
     };
   }
 
   componentDidMount() {
+    // determine screen size and make appropriate adjustments
+    this.determineMoviesCount(true);
+    window.addEventListener("resize", this.handleWindowResize);
+
+
     if (this.props.saved) {
       this.setState({showLoader: true});
     }
@@ -53,6 +59,7 @@ export default class MoviesCardList extends React.Component {
       if (!this.props.saved) {
         getFilms()
           .then(() => {
+            this.determineMoviesCount(true);
             this.setState({
               moviesList: getFilteredFilms(this.props.formParams, "storedFilms"),
             });
@@ -71,6 +78,35 @@ export default class MoviesCardList extends React.Component {
         });
       }
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleWindowResize);
+  }
+
+  determineMoviesCount = (initial=false) => {
+    let initialCount = 12, incr = 4;
+    if (window.innerWidth > 760 && window.innerWidth <= 1190) {
+      initialCount = 8;
+      incr = 2;
+    } else if (window.innerWidth <= 760) {
+      initialCount = 5;
+      incr = 2;
+    }
+    if (initial) {
+      this.setState({filmsShownCount: initialCount});
+    } else {
+      this.setState((prevState) => ({
+        filmsShownCount: (prevState.filmsShownCount % incr !== 0)
+          ? (prevState.filmsShownCount + incr - (prevState.filmsShownCount % incr))
+          : prevState.filmsShownCount,
+      }));
+    }
+    this.setState({filmsShownIncrement: incr});
+  }
+
+  handleWindowResize = () => {
+    setTimeout(this.determineMoviesCount, 200);
   }
 
   // highlight cur filmsList like-buttons correctly
@@ -95,15 +131,9 @@ export default class MoviesCardList extends React.Component {
   }
 
   handleMoreBtnClick = () => {
-    this.setState({
-      showLoader: true,
-    });
-    setTimeout(() => {
-      this.setState((prevState) => ({
-        showLoader: false,
-        filmsShownCount: prevState.filmsShownCount + 4,
-      }));
-    }, 2000);
+    this.setState((prevState) => ({
+      filmsShownCount: prevState.filmsShownCount + prevState.filmsShownIncrement,
+    }));
   }
 
   render() {
@@ -113,14 +143,14 @@ export default class MoviesCardList extends React.Component {
           {(this.props.saved)
             ? this.state.likedMoviesList.map((movie) =>
               (<MovieCard key={`saved-${movie.movieId}`} movie={movie} saved={true} onCardDelete={this.handleMovieDelete} />))
-            : this.state.moviesList.slice(0, 12).map((movie) =>
+            : this.state.moviesList.slice(0, Math.min(this.state.filmsShownCount, this.state.moviesList.length)).map((movie) =>
               (<MovieCard key={`global-${movie.id}`} movie={movie} saved={false} />))
           }
         </div>
         <button
           type="button"
           onClick={this.handleMoreBtnClick}
-          className={`movies-list__load-more-btn ${(this.props.saved || this.state.showLoader || this.state.moviesList.length < 12) && 'movies-list__load-more-btn_hidden'}`}
+          className={`movies-list__load-more-btn ${(this.props.saved || this.state.showLoader || this.state.moviesList.length < this.state.filmsShownCount) && 'movies-list__load-more-btn_hidden'}`}
         >
           Ещё
         </button>
