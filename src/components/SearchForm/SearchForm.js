@@ -16,7 +16,9 @@ export default function SearchForm(props) {
 
   async function handleFormSubmit(e) {
     e.preventDefault();
-    await getFilms();
+    if (!props.saved) {
+      await getFilms();
+    }
     props.setFormParams({
       searchStr,
       shortsEnabled,

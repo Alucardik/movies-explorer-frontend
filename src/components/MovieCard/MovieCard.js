@@ -1,8 +1,15 @@
 import './MovieCard.css';
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
+import {mainApi} from "../../utils/MainApi";
 
 export default function MovieCard(props) {
-  const [triggered, setTriggered] = useState(props.movie.liked);
+  const [liked, setLiked] = useState(false);
+  const { movieId } = props.movie;
+
+
+  useEffect(() => {
+    setLiked(props.movie.liked);
+  }, [props.movie.liked]);
 
   function getHoursAndMinutes(mins) {
     const hours = Math.floor(mins / 60);
@@ -11,14 +18,43 @@ export default function MovieCard(props) {
 
   function handleBtnClick() {
     if (!props.saved) {
-      setTriggered(!triggered);
+      // liked actually
+      if (!liked) {
+        mainApi.saveMovie(props.movie)
+          .then(() => {
+            setLiked(!liked);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      } else {
+        mainApi.removeMovie(movieId)
+          .then(() => {
+            setLiked(!liked);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
+    } else {
+      console.log(props.movie);
+      mainApi.removeMovie(movieId)
+        .then(() => {
+          props.onCardDelete(movieId);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
     }
-    // card deletion logic will be here
   }
 
   return(
     <div className="movie-card">
-      <img src={`https://api.nomoreparties.co${props.movie.image.url}`} alt="Превью фильма" className="movie-card__image" />
+      <img
+        src={`${(props.saved) ? (props.movie.image) : (`https://api.nomoreparties.co${props.movie.image.url}`)}`}
+        alt="Превью фильма"
+        className="movie-card__image"
+      />
       <div className="movie-card__title-container">
         <h2 className="movie-card__title">
           {props.movie.nameRU}
@@ -27,7 +63,7 @@ export default function MovieCard(props) {
           type="button"
           className={`movie-card__btn
           ${props.saved ? 'movie-card__btn_type_delete' : 'movie-card__btn_type_like'}
-          ${(!props.saved && triggered) && 'movie-card__btn_liked'}`}
+          ${(!props.saved && liked) && 'movie-card__btn_liked'}`}
           onClick={handleBtnClick}
         />
       </div>

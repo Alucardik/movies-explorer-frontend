@@ -19,12 +19,14 @@ import Profile from '../Profile/Profile';
 function App() {
   const [curUserName, setCurUserName] = useState("");
   const [curUserMail, setCurUserMail] = useState("");
+  const [curUserId, setCurUserId] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
 
   // check current user in cookies on mount
   useEffect(() => {
     mainApi.checkToken()
-      .then(({ name, email }) => {
+      .then(({ name, email, _id }) => {
+        setCurUserId(_id);
         setCurUserName(name);
         setCurUserMail(email);
         setLoggedIn(true);
@@ -38,6 +40,7 @@ function App() {
     <currentUserContext.Provider value={{
       name: curUserName,
       email: curUserMail,
+      id: curUserId,
       loggedIn: loggedIn,
     }}>
       <Header />

@@ -8,7 +8,7 @@ export default function SavedMovies() {
   return(
     <div className="page">
       <main className="content">
-        <SearchForm />
+        <SearchForm saved={true}/>
         <MoviesCardList saved={true} />
       </main>
       <Footer />

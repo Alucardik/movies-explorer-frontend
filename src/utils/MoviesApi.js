@@ -15,7 +15,9 @@ function getFilms() {
       return Promise.reject(`Encountered error: ${res.status}`);
     }))
     .then((filmList) => {
-      // update stored films on search
+      filmList.forEach((film) => {
+        film.liked = false;
+      });
       localStorage.setItem("storedFilms", JSON.stringify(filmList));
     })
     .catch((err) => {

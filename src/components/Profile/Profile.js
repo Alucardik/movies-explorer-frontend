@@ -88,6 +88,8 @@ class Profile extends React.Component {
   handleExit = () => {
     mainApi.logout()
       .then(() => {
+        localStorage.removeItem("likedFilms");
+        localStorage.removeItem("storedFilms");
         this.props.setters.setName("");
         this.props.setters.setMail("");
         this.props.setters.setLogged(false);
