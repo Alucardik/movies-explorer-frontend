@@ -1,6 +1,6 @@
 import './MovieCard.css';
-import {useEffect, useState} from 'react';
-import {mainApi} from "../../utils/MainApi";
+import { useEffect, useState } from 'react';
+import { mainApi } from "../../utils/MainApi";
 
 export default function MovieCard(props) {
   const [liked, setLiked] = useState(false);
@@ -28,7 +28,7 @@ export default function MovieCard(props) {
             console.log(err);
           })
       } else {
-        mainApi.removeMovie(movieId)
+        mainApi.removeMovie(props.movie.id)
           .then(() => {
             setLiked(!liked);
           })
@@ -37,7 +37,6 @@ export default function MovieCard(props) {
           })
       }
     } else {
-      console.log(props.movie);
       mainApi.removeMovie(movieId)
         .then(() => {
           props.onCardDelete(movieId);

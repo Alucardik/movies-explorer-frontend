@@ -1,6 +1,5 @@
 import './SearchForm.css';
-import { useState } from "react";
-import { getFilms } from "../../utils/MoviesApi";
+import { useState } from 'react';
 
 export default function SearchForm(props) {
   const [searchStr, setSearchStr] = useState("");
@@ -14,16 +13,12 @@ export default function SearchForm(props) {
     setShortsEnabled(e.target.checked);
   }
 
-  async function handleFormSubmit(e) {
+  function handleFormSubmit(e) {
     e.preventDefault();
-    if (!props.saved) {
-      await getFilms();
-    }
     props.setFormParams({
       searchStr,
       shortsEnabled,
     });
-    setSearchStr("");
   }
 
   return(

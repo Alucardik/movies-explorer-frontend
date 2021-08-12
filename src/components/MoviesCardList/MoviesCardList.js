@@ -1,8 +1,7 @@
 import './MoviesCardList.css';
 import React from 'react';
 
-import { mockMovies } from '../../utils/constants';
-import { getFilteredFilms } from '../../utils/MoviesApi';
+import { getFilms, getFilteredFilms } from '../../utils/MoviesApi';
 
 import MovieCard from '../MovieCard/MovieCard';
 import Preloader from '../Preloader/Preloader';
@@ -33,15 +32,9 @@ export default class MoviesCardList extends React.Component {
           film.liked = true;
         });
         this.setState({likedMoviesList: res});
+        localStorage.setItem("likedFilms", JSON.stringify(res));
         if (!this.props.saved) {
-          this.setState((prevState) => ({
-            moviesList: prevState.moviesList.map((film) => {
-              if (res.find((matchingFilm) => matchingFilm.movieId === film.id)) {
-                film.liked = true;
-              }
-              return film;
-            }),
-          }));
+          this.sortOutLikedMovies();
         }
       })
       .catch((err) => {
@@ -56,10 +49,40 @@ export default class MoviesCardList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.formParams !== this.props.formParams) {
-      this.setState({
-        moviesList: getFilteredFilms(this.props.formParams),
-      });
+      this.setState({showLoader: true});
+      if (!this.props.saved) {
+        getFilms()
+          .then(() => {
+            this.setState({
+              moviesList: getFilteredFilms(this.props.formParams, "storedFilms"),
+            });
+            this.sortOutLikedMovies();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            this.setState({showLoader: false});
+          })
+      } else {
+        this.setState({
+          likedMoviesList: getFilteredFilms(this.props.formParams, "likedFilms"),
+          showLoader: false,
+        });
+      }
     }
+  }
+
+  // highlight cur filmsList like-buttons correctly
+  sortOutLikedMovies() {
+    this.setState((prevState) => ({
+      moviesList: prevState.moviesList.map((film) => {
+        if (this.state.likedMoviesList.find((matchingFilm) => matchingFilm.movieId === film.id)) {
+          film.liked = true;
+        }
+        return film;
+      }),
+    }));
   }
 
   handleMovieDelete = (movieId) => {
@@ -78,7 +101,7 @@ export default class MoviesCardList extends React.Component {
     setTimeout(() => {
       this.setState((prevState) => ({
         showLoader: false,
-        moviesList: [...prevState.moviesList, ...mockMovies.slice(0, 4)],
+        filmsShownCount: prevState.filmsShownCount + 4,
       }));
     }, 2000);
   }
