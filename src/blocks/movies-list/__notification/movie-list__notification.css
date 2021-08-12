@@ -1,0 +1,9 @@
+.movie-list__notification {
+  display: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #fff;
+}

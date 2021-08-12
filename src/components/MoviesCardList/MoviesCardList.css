@@ -1,6 +1,8 @@
 @import url(../../vendor/normalize.css);
 
 @import url(../../blocks/movies-list/movies-list.css);
+@import url(../../blocks/movies-list/__notification/movie-list__notification.css);
+@import url(../../blocks/movies-list/__notification/_shown/movie-list__notification_shown.css);
 @import url(../../blocks/movies-list/movies-list__gallery.css);
 @import url(../../blocks/movies-list/__load-more-btn/movies-list__load-more-btn.css);
 @import url(../../blocks/movies-list/__load-more-btn/_hidden/movies-list__load-more-btn_hidden.css);

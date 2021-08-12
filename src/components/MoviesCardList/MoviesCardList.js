@@ -20,6 +20,7 @@ export default class MoviesCardList extends React.Component {
       showLoader: false,
       filmsShownCount: 0,
       filmsShownIncrement: 0,
+      notification: "",
     };
   }
 
@@ -55,7 +56,10 @@ export default class MoviesCardList extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.formParams !== this.props.formParams) {
-      this.setState({showLoader: true});
+      this.setState({
+        showLoader: true,
+        notification: "",
+      });
       if (!this.props.saved) {
         getFilms()
           .then(() => {
@@ -63,9 +67,14 @@ export default class MoviesCardList extends React.Component {
             this.setState({
               moviesList: getFilteredFilms(this.props.formParams, "storedFilms"),
             });
+            if (this.state.moviesList.length === 0) {
+              this.setState({notification: "Ничего не найдено."});
+            }
             this.sortOutLikedMovies();
           })
           .catch((err) => {
+            this.setState({notification:
+                "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз."});
             console.log(err);
           })
           .finally(() => {
@@ -139,6 +148,9 @@ export default class MoviesCardList extends React.Component {
   render() {
     return(
       <section className="movies-list">
+        <p className={`movie-list__notification ${(this.state.notification !== "") && "movie-list__notification_shown"}`} >
+          {this.state.notification}
+        </p>
         <div className="movies-list__gallery">
           {(this.props.saved)
             ? this.state.likedMoviesList.map((movie) =>
