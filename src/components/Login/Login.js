@@ -2,6 +2,7 @@ import './Login.css';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
 import {mainApi} from '../../utils/MainApi';
+import isEmail from "validator/es/lib/isEmail";
 
 class Login extends React.Component {
   constructor(props) {
@@ -31,11 +32,16 @@ class Login extends React.Component {
   handleInputChange = (e) => {
     // resetting error message from server
     this.setState({serverError: ""});
-    const { name } = e.target;
-    this.setState({[name]: e.target.value});
+    const { name, value } = e.target;
+    this.setState({[name]: value});
     (!e.target.validity.valid)
       ? this.setState({[`${name}Error`]: e.target.validationMessage})
       : this.setState({[`${name}Error`]: ""});
+    if (name === "userMail") {
+      isEmail(value)
+        ? this.setState({[`${name}Error`]: ""})
+        : this.setState({[`${name}Error`]: "Пожалуйста, введите корректный email"});
+    }
   }
 
   handleFormSubmit = (e) => {

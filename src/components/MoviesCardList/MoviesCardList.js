@@ -85,6 +85,9 @@ export default class MoviesCardList extends React.Component {
           likedMoviesList: getFilteredFilms(this.props.formParams, "likedFilms"),
           showLoader: false,
         });
+        if (this.state.likedMoviesList.length === 0) {
+          this.setState({notification: "Ничего не найдено."});
+        }
       }
     }
   }
