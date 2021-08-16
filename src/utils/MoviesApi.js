@@ -1,4 +1,4 @@
-import { movieApiBaseUrl } from './constants';
+import { movieApiBaseUrl, shortFilmTimeLimit } from './constants';
 
 function getFilms() {
   if (localStorage.getItem("storedFilms")) {
@@ -29,7 +29,7 @@ function getFilteredFilms({ searchStr, shortsEnabled }, key) {
       return (film.nameRU && film.nameRU.toLocaleLowerCase().includes(searchStr))
         || (film.nameEN && film.nameEN.toLocaleLowerCase().includes(searchStr));
     } else {
-      return film.duration > 40 &&
+      return film.duration > shortFilmTimeLimit &&
         ((film.nameRU && film.nameRU.toLocaleLowerCase().includes(searchStr))
         || (film.nameEN && film.nameEN.toLocaleLowerCase().includes(searchStr)));
     }

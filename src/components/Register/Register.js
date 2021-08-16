@@ -1,7 +1,6 @@
 import './Register.css';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
-import { mainApi } from '../../utils/MainApi';
 import isEmail from 'validator/es/lib/isEmail';
 
 class Register extends React.Component {
@@ -51,20 +50,10 @@ class Register extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    mainApi.register({
-      name: this.state.userName,
-      email: this.state.userMail,
-      password: this.state.userPassword,
-    })
-      .then(() => {
-        return mainApi.login({email: this.state.userMail, password: this.state.userPassword});
-      })
-      .then(() => {
-        this.props.history.push("/movies");
-      })
+    this.setState({formValid: false});
+    this.props.onRegister(this.state.userName, this.state.userMail, this.state.userPassword)
       .catch((err) => {
-        console.log(err);
-        this.setState({serverError: err});
+        this.setState({serverError: err, formValid: true});
       });
   }
 

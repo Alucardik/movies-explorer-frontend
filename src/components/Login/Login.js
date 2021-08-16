@@ -1,7 +1,6 @@
 import './Login.css';
 import { Link, withRouter } from 'react-router-dom';
 import React from 'react';
-import {mainApi} from '../../utils/MainApi';
 import isEmail from "validator/es/lib/isEmail";
 
 class Login extends React.Component {
@@ -46,21 +45,12 @@ class Login extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    mainApi.login({
-      email: this.state.userMail,
-      password: this.state.userPassword,
-    })
-      .then(mainApi.checkToken)
-      .then(({ name, email }) => {
-        this.props.setters.setName(name);
-        this.props.setters.setMail(email);
-        this.props.setters.setLogged(true);
-        this.setState({serverError: "",});
-        this.props.history.push("/movies");
-      })
+    // blocking send btn
+    this.setState({formValid: false});
+    this.props.onLogin(this.state.userMail, this.state.userPassword)
       .catch((err) => {
         console.log(err);
-        this.setState({serverError: err});
+        this.setState({serverError: err, formValid: true});
       });
   }
 

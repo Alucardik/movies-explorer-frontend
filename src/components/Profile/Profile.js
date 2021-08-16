@@ -4,7 +4,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { currentUserContext } from '../../contexts/CurrentUserContext';
-import { mainApi } from "../../utils/MainApi";
 import isEmail from "validator/es/lib/isEmail";
 
 
@@ -48,25 +47,6 @@ class Profile extends React.Component {
       (this.state.userNameError === "");
   }
 
-  handleEditClick = (e) => {
-    e.preventDefault();
-    mainApi.updateUser({name: this.state.userName, email: this.state.userMail})
-      .then(({ name, email }) => {
-        this.setState({
-          editAllowed: false,
-          userName: name,
-          userMail: email,
-        });
-        this.props.setters.setName(name);
-        this.props.setters.setMail(email);
-        this.setState({serverRespondMsg: "Данные обновлены"});
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({serverError: err});
-      });
-  }
-
   handleChange = (e) => {
     this.setState({serverRespondMsg: ""});
     this.setState({serverError: ""});
@@ -95,19 +75,16 @@ class Profile extends React.Component {
     }
   }
 
-  handleExit = () => {
-    mainApi.logout()
+  handleEditClick = (e) => {
+    e.preventDefault();
+    this.setState({editAllowed: false});
+    this.props.onProfileUpdate(this.state.userName, this.state.userMail)
       .then(() => {
-        localStorage.removeItem("likedFilms");
-        localStorage.removeItem("storedFilms");
-        this.props.setters.setName("");
-        this.props.setters.setMail("");
-        this.props.setters.setLogged(false);
-        this.props.history.push("/");
+        this.setState({serverRespondMsg: "Данные обновлены"});
       })
       .catch((err) => {
-        console.log(err);
-      })
+        this.setState({serverError: err, editAllowed: true});
+      });
   }
 
   render() {
@@ -166,7 +143,7 @@ class Profile extends React.Component {
             >
               Редактировать
             </button>
-            <button type="button" className="profile__btn profile__btn_type_exit" onClick={this.handleExit}>
+            <button type="button" className="profile__btn profile__btn_type_exit" onClick={this.props.onLogout}>
               Выйти из аккаунта
             </button>
           </div>
