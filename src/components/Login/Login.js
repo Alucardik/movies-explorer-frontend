@@ -96,6 +96,7 @@ class Login extends React.Component {
                 type="password"
                 value={this.state.userPassword}
                 onChange={this.handleInputChange}
+                minLength={4}
                 required
               />
             </label>

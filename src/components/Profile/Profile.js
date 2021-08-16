@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import { currentUserContext } from '../../contexts/CurrentUserContext';
 import { mainApi } from "../../utils/MainApi";
+import isEmail from "validator/es/lib/isEmail";
 
 
 class Profile extends React.Component {
@@ -22,6 +23,8 @@ class Profile extends React.Component {
       userMail: "example@mail.ru",
       userNameError: "",
       userMailError: "",
+      serverRespondMsg: "",
+      serverError: "",
     }
   }
 
@@ -56,6 +59,7 @@ class Profile extends React.Component {
         });
         this.props.setters.setName(name);
         this.props.setters.setMail(email);
+        this.setState({serverRespondMsg: "Данные обновлены"});
       })
       .catch((err) => {
         console.log(err);
@@ -64,6 +68,7 @@ class Profile extends React.Component {
   }
 
   handleChange = (e) => {
+    this.setState({serverRespondMsg: ""});
     this.setState({serverError: ""});
     const {name, value} = e.target;
     this.setState({[name]: value});
@@ -71,6 +76,11 @@ class Profile extends React.Component {
       ? this.setState({[`${name}Error`]: e.target.validationMessage})
       : this.setState({[`${name}Error`]: ""});
 
+    if (name === "userMail") {
+      isEmail(value)
+        ? this.setState({[`${name}Error`]: ""})
+        : this.setState({[`${name}Error`]: "Пожалуйста, введите корректный email"});
+    }
 
     if ((name === "userName")
       ? (value !== this.context.name || this.state.userMail !== this.context.email)
@@ -142,6 +152,9 @@ class Profile extends React.Component {
             </label>
             <p className={`profile__input-error ${(this.state.userPasswordError !== "" || this.state.serverError !== "") && "profile__input-error_visible"}`}>
               {(this.state.userMailError !== "") ? this.state.userMailError : this.state.serverError}
+            </p>
+            <p className={`profile__server-response-positive ${(this.state.serverRespondMsg !== "") && "profile__server-response-positive_visible"}`}>
+              {this.state.serverRespondMsg}
             </p>
           </form>
           <div className="profile__controls">

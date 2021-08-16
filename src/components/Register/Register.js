@@ -119,6 +119,7 @@ class Register extends React.Component {
                 name="userPassword"
                 value={this.state.userPassword}
                 onChange={this.handleInputChange}
+                minLength={4}
                 required
               />
             </label>

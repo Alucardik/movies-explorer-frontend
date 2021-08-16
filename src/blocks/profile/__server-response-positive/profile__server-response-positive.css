@@ -1,0 +1,9 @@
+.profile__server-response-positive {
+  visibility: hidden;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #3DDC84;
+  text-align: center;
+}
