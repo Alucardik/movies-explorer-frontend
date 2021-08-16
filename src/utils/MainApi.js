@@ -96,7 +96,30 @@ class MainApi {
       .then(this._checkResponseJson);
   }
 
-  saveMovie = (movie) => {
+  saveMovie = ({
+               country,
+               director,
+               duration,
+               year,
+               description,
+               trailerLink,
+               nameRU,
+               nameEN,
+               image,
+               id
+  }) => {
+    if (!country) {
+      country="null";
+    }
+
+    if (!director) {
+      director="null";
+    }
+
+    if (!nameEN) {
+      nameEN="null";
+    }
+
     return fetch(`${this._baseUrl}/movies`, {
       method: "POST",
       credentials: "include",
@@ -104,17 +127,17 @@ class MainApi {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        country: movie.country,
-        director: movie.director,
-        duration: movie.duration,
-        year: movie.year,
-        description: movie.description,
-        image: `https://api.nomoreparties.co${movie.image.url}`,
-        trailer: movie.trailerLink,
-        nameRU: movie.nameRU,
-        nameEN: movie.nameEN,
-        thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
-        movieId: movie.id,
+        country: country,
+        director: director,
+        duration: duration,
+        year: year,
+        description: description,
+        image: `https://api.nomoreparties.co${image.url}`,
+        trailer: trailerLink,
+        nameRU: nameRU,
+        nameEN: nameEN,
+        thumbnail: `https://api.nomoreparties.co${image.formats.thumbnail.url}`,
+        movieId: id,
       }),
     })
       .then(this._checkResponseJson);
