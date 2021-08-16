@@ -45,15 +45,17 @@ function App() {
     }}>
       <Header />
       <Switch>
-        <Route path="/signup" component={Register} />
-        <Route path="/signin">
-          <Login setters={{
-              setName: setCurUserName,
-              setMail: setCurUserMail,
-              setLogged: setLoggedIn,
-            }}
-          />
-        </Route>
+        <ProtectedRoute inverse={true} path="/signup" component={Register} />
+        <ProtectedRoute
+          inverse={true}
+          path="/signin"
+          component={Login}
+          setters={{
+            setName: setCurUserName,
+            setMail: setCurUserMail,
+            setLogged: setLoggedIn,
+          }}
+        />
         <ProtectedRoute
           path="/profile"
           component={Profile}
