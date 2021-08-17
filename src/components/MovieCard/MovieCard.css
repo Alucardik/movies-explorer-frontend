@@ -1,6 +1,7 @@
 @import url(../../vendor/normalize.css);
 
 @import url(../../blocks/movie-card/movie-card.css);
+@import url(../../blocks/movie-card/movie-card__image-link.css);
 @import url(../../blocks/movie-card/movie-card__image.css);
 @import url(../../blocks/movie-card/movie-card__title-container.css);
 @import url(../../blocks/movie-card/movie-card__title.css);

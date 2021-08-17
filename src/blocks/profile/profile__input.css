@@ -13,4 +13,5 @@
 
 .profile__input:focus {
   outline: solid 1px #4285F4;
+  text-align: left;
 }

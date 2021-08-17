@@ -1,0 +1,10 @@
+.auth-form__submit-btn_disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.auth-form__submit-btn_disabled:hover {
+  opacity: .5;
+  background-color: #4285F4;
+  color: #fff;
+}

@@ -12,5 +12,6 @@
 @import url(../../blocks/auth-form/__input-error/auth-form__input-error.css);
 @import url(../../blocks/auth-form/__input-error/_visible/auth-form__input-error_visible.css);
 @import url(../../blocks/auth-form/__submit-btn/auth-form__submit-btn.css);
+@import url(../../blocks/auth-form/__submit-btn/_disabled/auth-form__submit-btn_disabled.css);
 @import url(../../blocks/auth-form/auth-form__hint.css);
 @import url(../../blocks/auth-form/auth-form__redirect-link.css);

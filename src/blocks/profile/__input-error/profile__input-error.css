@@ -1,7 +1,6 @@
-.auth-form__input-error {
+.profile__input-error {
   visibility: hidden;
   margin: 0 0 6px;
-  min-height: 12px;
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
@@ -9,6 +8,6 @@
   color: #EE3465;
 }
 
-.auth-form__input-error:last-of-type {
+.profile__input-error:last-of-type {
   margin-bottom: 0;
 }
